@@ -1,11 +1,15 @@
-/** @type {import('tailwindcss').Config} */
+// tailwind.config.js para ESM
 export default {
   content: [
-    './index.html',
-    './src/**/*.{js,ts,jsx,tsx}',
+    "./index.html",
+    "./src/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      colors: {
+        naranja: '#FF7F11', // Color personalizado
+      },
+    },
   },
   plugins: [],
-}
+};
