@@ -1,0 +1,181 @@
+.Iniciomarco {
+  width: 550px;
+  padding: 15px;
+  background-color: white;
+  text-align: center;
+  gap: 30px;
+}
+
+body {
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  background-color: #cbd6e2;
+}
+
+input {
+  font-family: 'Roboto', sans-serif;
+  outline: 0;
+  background: rgba(0, 0, 0, 0.05);
+  width: 100%;
+  border: 0;
+  margin: 0 0 15px;
+  padding: 15px;
+  box-sizing: border-box;
+  font-size: 14px;
+  text-align: left;
+  color: black;
+}
+
+.input-placeholder {
+  text-align: left;
+}
+
+.buttonIngresar {
+  align-items: center;
+  background-clip: padding-box;
+  background-color: #fa6400;
+  border: 1px solid transparent;
+  border-radius: 0.25rem;
+  box-shadow: rgba(0, 0, 0, 0.02) 0 1px 3px 0;
+  box-sizing: border-box;
+  color: #fff;
+  cursor: pointer;
+  display: inline-flex;
+  font-family: system-ui, -apple-system, system-ui, 'Helvetica Neue', Helvetica,
+    Arial, sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  justify-content: center;
+  line-height: 1.25;
+  margin: 0;
+  min-height: 3rem;
+  padding: calc(0.875rem - 1px) calc(1.5rem - 1px);
+  position: relative;
+  text-decoration: none;
+  transition: all 250ms;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  vertical-align: baseline;
+  width: auto;
+}
+
+.buttonIngresar {
+  background-color: #fb8332;
+  box-shadow: rgba(0, 0, 0, 0.1) 0 4px 12px;
+}
+
+.buttonIngresar:hover {
+  transform: translateY(-1px);
+}
+
+.buttonIngresar-active {
+  background-color: #c85000;
+  box-shadow: rgba(0, 0, 0, 0.06) 0 2px 4px;
+  transform: translateY(0);
+}
+
+.buttonVirtual {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  padding: 10px 20px;
+  background-color: #ad490e;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.buttonVirtual:hover {
+  background-color: #8b3503;
+}
+
+p {
+  text-align: left;
+  font-size: 12px;
+}
+
+.checkbox-label {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.checkbox-label p {
+  margin: 0;
+  font-size: 12px;
+}
+
+.password-container {
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.password-container input {
+  font-family: 'Roboto', sans-serif;
+  outline: 0;
+  background: rgba(0, 0, 0, 0.05);
+  width: 100%;
+  border: 0;
+  margin: 0 0 15px;
+  padding: 15px;
+  box-sizing: border-box;
+  font-size: 14px;
+  text-align: left;
+  color: black;
+  flex-grow: 1;
+}
+
+.show-button {
+  padding: 10px;
+  background-color: black;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-left: 10px;
+  flex-shrink: 0;
+}
+.show-button:hover {
+  background-color: black;
+}
+
+.icon-toggle {
+  cursor: pointer;
+  padding: 10px;
+  color: black;
+}
+
+.icon-toggle:hover {
+  color: black;
+}
+
+header {
+  padding: 20px;
+  text-align: center;
+  background-color: rgba(240, 240, 240, 0.859);
+}
+
+header h1 {
+  font-size: 24px;
+  margin: 0;
+}
+
+header h3 {
+  font-size: 18px;
+  margin: 5px 0 15px;
+  color: #555;
+}
+footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  text-align: left;
+  padding: 10px;
+  background-color: #f5f5f5;
+  font-size: 14px;
+}
