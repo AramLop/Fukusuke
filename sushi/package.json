@@ -2,6 +2,8 @@
   "name": "sushi",
   "version": "0.1.0",
   "private": true,
+  "main":"index.js",
+  "type":"module",
   "dependencies": {
     "@emotion/react": "^11.13.3",
     "@emotion/styled": "^11.13.0",
@@ -25,7 +27,8 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "dev":"nodemon src/index.js"
   },
   "eslintConfig": {
     "extends": [
