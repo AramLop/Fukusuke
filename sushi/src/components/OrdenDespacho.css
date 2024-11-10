@@ -1,4 +1,5 @@
-/* IniciarSesion.css */
+
+  /* IniciarSesion.css */
 
 .contenedor-centro {
   display: flex;
@@ -41,8 +42,4 @@
 
 .vencimiento input {
   width: 60px;
-}
-.fila{
-  display: flex;
-  gap: 20px;
 }
