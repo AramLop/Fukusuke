@@ -1,44 +1,53 @@
-import { useState, useEffect } from "react";
-import { useLocation } from "react-router-dom"; // Importar useLocation para detectar cambios de ruta
-import CarritoCompras from "./CarritoCompras";
+import { useState } from 'react';
 
 const TuComponentePadre = () => {
-  const [carrito, setCarrito] = useState([]);
-  const [mostrarCarrito, setMostrarCarrito] = useState(false);
-  const location = useLocation(); // Obtener la ubicación actual
+  const [nuevoProducto, setNuevoProducto] = useState({ nombre: '', precio: 0, imagen: '', cantidad: 1 });
 
-  // Función para alternar el estado del carrito
-  const toggleCarrito = () => {
-    setMostrarCarrito((prev) => !prev);
+  const agregarProductoAlCarrito = async () => {
+    try {
+      const response = await fetch('/api/carrito', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(nuevoProducto),
+      });
+      const data = await response.json();
+      console.log(data);
+      // Reiniciar el formulario
+      setNuevoProducto({ nombre: '', precio: 0, imagen: '', cantidad: 1 });
+    } catch (error) {
+      console.error('Error al agregar producto:', error);
+    }
   };
-
-  // Función para eliminar un item del carrito
-  const eliminarItem = (id) => {
-    setCarrito(carrito.filter((item) => item.id !== id));
-  };
-
-  // Función para calcular el total
-  const calcularTotal = () => {
-    return carrito.reduce((total, item) => total + item.precio * item.cantidad, 0);
-  };
-
-  // Efecto para cerrar el carrito al cambiar de ruta
-  useEffect(() => {
-    setMostrarCarrito(false); // Cerrar el carrito
-  }, [location]); // Dependencia en location
 
   return (
     <div>
-      <button onClick={toggleCarrito}>Mostrar Carrito</button>
-      
-      {mostrarCarrito && (
-        <CarritoCompras
-          carrito={carrito}
-          eliminarItem={eliminarItem}
-          calcularTotal={calcularTotal}
-          toggleCarrito={toggleCarrito}
-        />
-      )}
+      <input
+        type="text"
+        placeholder="Nombre"
+        value={nuevoProducto.nombre}
+        onChange={(e) => setNuevoProducto({ ...nuevoProducto, nombre: e.target.value })}
+      />
+      <input
+        type="number"
+        placeholder="Precio"
+        value={nuevoProducto.precio}
+        onChange={(e) => setNuevoProducto({ ...nuevoProducto, precio: Number(e.target.value) })}
+      />
+      <input
+        type="text"
+        placeholder="Imagen URL"
+        value={nuevoProducto.imagen}
+        onChange={(e) => setNuevoProducto({ ...nuevoProducto, imagen: e.target.value })}
+      />
+      <input
+        type="number"
+        placeholder="Cantidad"
+        value={nuevoProducto.cantidad}
+        onChange={(e) => setNuevoProducto({ ...nuevoProducto, cantidad: Number(e.target.value) })}
+      />
+      <button onClick={agregarProductoAlCarrito}>Agregar al Carrito</button>
     </div>
   );
 };
