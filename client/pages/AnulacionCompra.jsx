@@ -4,13 +4,14 @@ import { registerRequest } from "../api/auth";
 import { useNavigate } from "react-router-dom";
 
 function AnulacionCompra() {
-  const [error, setError] = useState(null); // Corregido
+  const [error, setError] = useState(null);
   const {
     register,
     handleSubmit,
-    formState: { errors }, // Extraer errores
+    formState: { errors },
   } = useForm();
   const navigate = useNavigate();
+
   const onSubmit = handleSubmit(async (values) => {
     try {
       const response = await registerRequest(values);
@@ -32,29 +33,32 @@ function AnulacionCompra() {
     <div className="flex h-[calc(100vh-100px)] items-center justify-center">
       <div className="bg-zinc-500 max-w-md w-full p-10 rounded-md">
         <h1 className="text-2xl font-bold mb-4">Página de anulación</h1>
-        {error && <p className="text-red-500">{error}</p>} {/* Mostrar error */}
+        {error && <p className="text-red-500">{error}</p>}
         <form onSubmit={onSubmit}>
-          {/* Campo Opción */}
-          <input
-            type="text"
+          {/* Lista desplegable para Opción */}
+          <select
             {...register("Opcion", {
               required: "La opción es obligatoria",
             })}
             className="w-full bg-zinc-700 text-white px-4 py-2 rounded-md my-2"
-            placeholder="Opción"
-          />
+          >
+            <option value="">Seleccione una opción</option>
+            <option value="Error en el pedido">Error en el pedido</option>
+            <option value="Producto dañado">Producto dañado</option>
+            <option value="Otro">Otro</option>
+          </select>
           {errors.Opcion && (
             <p className="text-red-500">{errors.Opcion.message}</p>
           )}
 
           {/* Campo Razón */}
-          <input
-            type="text"
+          <textarea
             {...register("Razon", {
               required: "La razón es obligatoria",
             })}
-            className="w-full bg-zinc-700 text-white px-4 py-2 rounded-md my-2"
-            placeholder="Razón"
+            className="w-full bg-zinc-700 text-white px-4 py-2 rounded-md my-2 resize-none"
+            placeholder="Escribe aquí la razón"
+            rows="4" // Altura fija en líneas
           />
           {errors.Razon && (
             <p className="text-red-500">{errors.Razon.message}</p>
@@ -62,10 +66,10 @@ function AnulacionCompra() {
 
           {/* Botón de envío */}
           <button
-            onClick={() => navigate("/")} // Redirigir al hacer clic
+            type="submit"
             className="mt-4 bg-red-600 text-white px-4 py-2 rounded-md w-full hover:bg-green-700"
           >
-            Cancelar pedido
+            Enviar
           </button>
         </form>
       </div>

@@ -7,7 +7,6 @@ const anulSchema=new mongoose.Schema({
     },
     Razon:{
         type:String,
-        required:true
 
     },
     fecha:{

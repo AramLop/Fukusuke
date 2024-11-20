@@ -1,30 +1,24 @@
 import mongoose from "mongoose";
 
-const pagoSchema= new mongoose.Schema({
-    Nombre:{
-        type:String,
-        require:true
+const pagoSchema = new mongoose.Schema({
+    Nombre: {
+        type: String,
+        required: true,
     },
-    Numero:{
-        type:String,
-        require:true
+    Numero: {
+        type: String,
+        required: true,
     },
-    CVV:{
-        type:String,
-        require:true
+    CVV: {
+        type: String,
+        required: true,
     },
-    Fecha:{
-        type:Date,
-        require:true
+    Fecha: {
+        type: Date,
+        required: true,
     },
-    fecha:{
-        type:Date,
-        default:Date.now
+}, {
+    timestamps: true, 
+});
 
-    },
-},{
-        timestamps:true
-    
-})
-
-export default mongoose.model('pago',pagoSchema)
+export default mongoose.model('Pago', pagoSchema); 

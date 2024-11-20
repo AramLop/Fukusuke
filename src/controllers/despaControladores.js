@@ -10,24 +10,33 @@ export const getDespacho=async(req,res)=>{
 };
 
 export const createDespacho=async (req,res)=>{
-    const {Nombre,Apellido,Direccion,NumeroD,NumeroT,CodigoPostal}=req.body;
+    try {
+        // Check if req.body exists
+        if (!req.body) {
+            return res.status(400).json({ message: "Request body is missing" });
+        }
 
-    const newDespacho=new despacho({
-        Nombre,
-        Apellido,
-        Direccion,
-        NumeroD,
-        NumeroT,
-        CodigoPostal,
-    });
+        const { Nombre, Apellido, Direccion, NumeroD, NumeroT, CodigoPostal } = req.body;
 
-    try{
+        // Validate required fields
+        if (!Nombre || !Apellido || !Direccion) {
+            return res.status(400).json({ message: "Required fields are missing" });
+        }
+
+        const newDespacho=new despacho({
+            Nombre,
+            Apellido,
+            Direccion,
+            NumeroD,
+            NumeroT,
+            CodigoPostal,
+        });
+
         const savedDespacho=await newDespacho.save();
         res.json(savedDespacho);
-    }catch(error){
-        res.status(500).json({ message: "Error al obtener los datos del despacho", error });
+    } catch (error) {
+        res.status(500).json({ message: "Error al crear el despacho", error });
     }
-
 };
 
 export const deleteDespacho=async (req,res)=>{
